@@ -17,8 +17,8 @@ final class CallbackMetadataEnricherTest extends TestCase
     public function testEnrich(): void
     {
         $metadata = (new CallbackMetadataEnricher(function (Metadata $metadata) {
-            return $metadata->with("message", "hello world");
+            return $metadata->with('message', 'hello world');
         }))->enrich(Metadata::makeEmpty());
-        $this->assertEquals($metadata->message, "hello world");
+        $this->assertEquals($metadata->get('message'), 'hello world');
     }
 }

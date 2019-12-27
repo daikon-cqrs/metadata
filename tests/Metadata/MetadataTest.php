@@ -16,27 +16,27 @@ final class MetadataTest extends TestCase
     public function testFromNative(): void
     {
         $metadata = Metadata::fromNative([
-            "some_string" => "foo",
-            "some_yay" => true,
-            "some_number" => 23,
-            "some_float" => 23.42,
-            "some_array" => [ "captain" => "arr" ]
+            'some_string' => 'foo',
+            'some_yay' => true,
+            'some_number' => 23,
+            'some_float' => 23.42,
+            'some_array' => ['captain' => 'arr']
         ]);
-        $this->assertEquals($metadata->get("some_string"), "foo");
-        $this->assertTrue($metadata->get("some_yay"));
-        $this->assertEquals($metadata->get("some_number"), 23);
-        $this->assertEquals($metadata->get("some_float"), 23.42);
-        $this->assertEquals($metadata->get("some_array"), [ "captain" => "arr" ]);
+        $this->assertEquals($metadata->get('some_string'), 'foo');
+        $this->assertTrue($metadata->get('some_yay'));
+        $this->assertEquals($metadata->get('some_number'), 23);
+        $this->assertEquals($metadata->get('some_float'), 23.42);
+        $this->assertEquals($metadata->get('some_array'), ['captain' => 'arr']);
     }
 
     public function testToNative(): void
     {
         $metadataArray = [
-            "foo" => "bar",
-            "yay_or_nay" => true,
-            "some_number" => 23,
-            "some_float" => 23.42,
-            "some_array" => [ "captain" => "arr" ]
+            'foo' => 'bar',
+            'yay_or_nay' => true,
+            'some_number' => 23,
+            'some_float' => 23.42,
+            'some_array' => ['captain' => 'arr']
         ];
         $metadata = Metadata::fromNative($metadataArray);
         $this->assertEquals($metadata->toNative(), $metadataArray);
@@ -45,22 +45,16 @@ final class MetadataTest extends TestCase
     public function testWith(): void
     {
         $emptyMetadata = Metadata::makeEmpty();
-        $metadata = $emptyMetadata->with("foo", "bar");
-        $this->assertNull($emptyMetadata->get("foo"));
-        $this->assertEquals($metadata->get("foo"), "bar");
+        $metadata = $emptyMetadata->with('foo', 'bar');
+        $this->assertNull($emptyMetadata->get('foo'));
+        $this->assertEquals($metadata->get('foo'), 'bar');
         $this->assertFalse($metadata->equals($emptyMetadata));
-    }
-
-    public function testMagicGet(): void
-    {
-        $metadata = Metadata::makeEmpty()->with("foo", [ "bar" => "foobar" ]);
-        $this->assertEquals($metadata->foo, [ "bar" => "foobar" ]);
     }
 
     public function testEquals(): void
     {
-        $metadata = Metadata::makeEmpty()->with("foo", "bar");
-        $this->assertTrue($metadata->equals(Metadata::fromNative([ "foo" => "bar" ])));
-        $this->assertFalse($metadata->equals(Metadata::fromNative([ "foo" => "baz" ])));
+        $metadata = Metadata::makeEmpty()->with('foo', 'bar');
+        $this->assertTrue($metadata->equals(Metadata::fromNative(['foo' => 'bar'])));
+        $this->assertFalse($metadata->equals(Metadata::fromNative(['foo' => 'baz'])));
     }
 }

@@ -38,7 +38,4 @@ interface MetadataInterface extends IteratorAggregate, Countable, FromNativeInte
     public function getIterator(): Traversable;
 
     public function count(): int;
-
-    /** @return mixed */
-    public function __get(string $key);
 }

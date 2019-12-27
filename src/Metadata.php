@@ -86,11 +86,6 @@ final class Metadata implements MetadataInterface
         return $this->compositeMap->toArray();
     }
 
-    public function __get(string $key)
-    {
-        return $this->get($key);
-    }
-
     private function __clone()
     {
         $this->compositeMap = clone $this->compositeMap;
