@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/data-structure.git",
-                "reference": "d76af0392481ef66f5a6d684bd426cb787ea80fd"
+                "reference": "e4ef20d0b53ceaddae8eb3b03de1a0ca49d08918"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/data-structure/zipball/d76af0392481ef66f5a6d684bd426cb787ea80fd",
-                "reference": "d76af0392481ef66f5a6d684bd426cb787ea80fd",
+                "url": "https://api.github.com/repos/daikon-cqrs/data-structure/zipball/e4ef20d0b53ceaddae8eb3b03de1a0ca49d08918",
+                "reference": "e4ef20d0b53ceaddae8eb3b03de1a0ca49d08918",
                 "shasum": ""
             },
             "require": {
@@ -48,7 +48,7 @@
                 "list",
                 "map"
             ],
-            "time": "2019-12-27T17:38:08+00:00"
+            "time": "2019-12-27T21:03:55+00:00"
         },
         {
             "name": "daikon/interop",
@@ -56,12 +56,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/interop.git",
-                "reference": "4b2abf788ea9caad3d1a63e5056866bc939b13ba"
+                "reference": "fa1da9dc9743f461b56977df98226d15016c0139"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/interop/zipball/4b2abf788ea9caad3d1a63e5056866bc939b13ba",
-                "reference": "4b2abf788ea9caad3d1a63e5056866bc939b13ba",
+                "url": "https://api.github.com/repos/daikon-cqrs/interop/zipball/fa1da9dc9743f461b56977df98226d15016c0139",
+                "reference": "fa1da9dc9743f461b56977df98226d15016c0139",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
             ],
             "description": "Interop components used across Daikon components.",
             "homepage": "https://github.com/daikon-cqrs/interop",
-            "time": "2019-12-27T17:10:50+00:00"
+            "time": "2019-12-27T20:57:56+00:00"
         },
         {
             "name": "php-ds/php-ds",
