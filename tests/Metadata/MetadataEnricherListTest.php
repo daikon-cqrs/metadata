@@ -17,9 +17,9 @@ final class MetadataEnricherListTest extends TestCase
     public function testPush(): void
     {
         $emptyList = new MetadataEnricherList;
-        $enricherList = $emptyList->push(
-            $this->getMockBuilder(MetadataEnricherInterface::class)->getMock()
-        );
+        /** @var MetadataEnricherInterface $mockEnricher */
+        $mockEnricher = $this->createMock(MetadataEnricherInterface::class);
+        $enricherList = $emptyList->push($mockEnricher);
         $this->assertCount(1, $enricherList);
         $this->assertTrue($emptyList->isEmpty());
     }

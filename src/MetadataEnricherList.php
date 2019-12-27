@@ -27,7 +27,8 @@ final class MetadataEnricherList implements IteratorAggregate, Countable
         );
     }
 
-    public function __construct(array $enrichers = [])
+    /** @param MetadataEnricherInterface[] $enrichers */
+    public function __construct(iterable $enrichers = [])
     {
         $this->init($enrichers, MetadataEnricherInterface::class);
     }
