@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * This file is part of the daikon-cqrs/metadata project.
  *
@@ -6,11 +6,10 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
-
 namespace Daikon\Metadata;
 
 use Ds\Map;
+use Traversable;
 
 final class Metadata implements MetadataInterface
 {
@@ -48,7 +47,6 @@ final class Metadata implements MetadataInterface
         return $this->compositeMap->hasKey($key);
     }
 
-    /** @param mixed $value */
     public function with(string $key, $value): MetadataInterface
     {
         $copy = clone $this;
@@ -63,10 +61,6 @@ final class Metadata implements MetadataInterface
         return $copy;
     }
 
-    /**
-     * @param mixed $default
-     * @return mixed
-     */
     public function get(string $key, $default = null)
     {
         return $this->has($key) ? $this->compositeMap->get($key) : $default;
@@ -77,7 +71,7 @@ final class Metadata implements MetadataInterface
         return $this->compositeMap->isEmpty();
     }
 
-    public function getIterator(): \Traversable
+    public function getIterator(): Traversable
     {
         return $this->compositeMap->getIterator();
     }

@@ -1,12 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * This file is part of the daikon-cqrs/metadata project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
-declare(strict_types=1);
 
 namespace Daikon\Tests\Metadata;
 
@@ -15,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 final class MetadataTest extends TestCase
 {
-    public function testFromNative()
+    public function testFromNative(): void
     {
         $metadata = Metadata::fromNative([
             "some_string" => "foo",
@@ -31,7 +29,7 @@ final class MetadataTest extends TestCase
         $this->assertEquals($metadata->get("some_array"), [ "captain" => "arr" ]);
     }
 
-    public function testToNative()
+    public function testToNative(): void
     {
         $metadataArray = [
             "foo" => "bar",
@@ -44,7 +42,7 @@ final class MetadataTest extends TestCase
         $this->assertEquals($metadata->toNative(), $metadataArray);
     }
 
-    public function testWith()
+    public function testWith(): void
     {
         $emptyMetadata = Metadata::makeEmpty();
         $metadata = $emptyMetadata->with("foo", "bar");
@@ -53,13 +51,13 @@ final class MetadataTest extends TestCase
         $this->assertFalse($metadata->equals($emptyMetadata));
     }
 
-    public function testMagicGet()
+    public function testMagicGet(): void
     {
         $metadata = Metadata::makeEmpty()->with("foo", [ "bar" => "foobar" ]);
         $this->assertEquals($metadata->foo, [ "bar" => "foobar" ]);
     }
 
-    public function testEquals()
+    public function testEquals(): void
     {
         $metadata = Metadata::makeEmpty()->with("foo", "bar");
         $this->assertTrue($metadata->equals(Metadata::fromNative([ "foo" => "bar" ])));
