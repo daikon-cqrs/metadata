@@ -14,6 +14,16 @@ use PHPUnit\Framework\TestCase;
 
 final class MetadataEnricherListTest extends TestCase
 {
+    public function testConstructWithSelf(): void
+    {
+        /** @var MetadataEnricherInterface $mockEnricher */
+        $mockEnricher = $this->createMock(MetadataEnricherInterface::class);
+        $enricherList = new MetadataEnricherList([$mockEnricher]);
+        $newList = new MetadataEnricherList($enricherList);
+        $this->assertCount(1, $newList);
+        $this->assertFalse($enricherList === $newList);
+    }
+
     public function testPush(): void
     {
         $emptyList = new MetadataEnricherList;
