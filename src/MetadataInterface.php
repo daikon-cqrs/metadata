@@ -8,34 +8,11 @@
 
 namespace Daikon\Metadata;
 
-use Countable;
+use Daikon\DataStructure\MapInterface;
 use Daikon\Interop\FromNativeInterface;
 use Daikon\Interop\ToNativeInterface;
-use IteratorAggregate;
-use Traversable;
 
-interface MetadataInterface extends IteratorAggregate, Countable, FromNativeInterface, ToNativeInterface
+interface MetadataInterface extends MapInterface, FromNativeInterface, ToNativeInterface
 {
-    public static function makeEmpty(): MetadataInterface;
-
-    public function equals(MetadataInterface $metadata): bool;
-
-    public function has(string $key): bool;
-
-    /** @param mixed $value */
-    public function with(string $key, $value): MetadataInterface;
-
-    public function without(string $key): MetadataInterface;
-
-    /**
-     * @param mixed $default
-     * @return mixed
-     */
-    public function get(string $key, $default = null);
-
-    public function isEmpty(): bool;
-
-    public function getIterator(): Traversable;
-
-    public function count(): int;
+    public static function makeEmpty(): self;
 }

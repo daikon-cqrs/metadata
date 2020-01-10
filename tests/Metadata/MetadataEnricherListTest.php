@@ -24,7 +24,7 @@ final class MetadataEnricherListTest extends TestCase
         $this->assertFalse($enricherList === $newList);
     }
 
-    public function testPush(): void
+    public function testWith(): void
     {
         $emptyList = new MetadataEnricherList;
         /** @var MetadataEnricherInterface $mockEnricher */

@@ -8,12 +8,13 @@
 
 namespace Daikon\Metadata;
 
+use Closure;
+
 final class CallbackMetadataEnricher implements MetadataEnricherInterface
 {
-    /** @var callable */
-    private $callable;
+    private Closure $callable;
 
-    public function __construct(callable $callable)
+    public function __construct(Closure $callable)
     {
         $this->callable = $callable;
     }

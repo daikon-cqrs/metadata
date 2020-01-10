@@ -46,7 +46,7 @@ final class MetadataTest extends TestCase
     {
         $emptyMetadata = Metadata::makeEmpty();
         $metadata = $emptyMetadata->with('foo', 'bar');
-        $this->assertNull($emptyMetadata->get('foo'));
+        $this->assertNull($emptyMetadata->get('foo', null));
         $this->assertEquals($metadata->get('foo'), 'bar');
         $this->assertFalse($metadata->equals($emptyMetadata));
     }

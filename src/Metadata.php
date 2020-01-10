@@ -8,86 +8,30 @@
 
 namespace Daikon\Metadata;
 
-use Ds\Map;
-use Traversable;
+use Daikon\DataStructure\MapTrait;
 
 final class Metadata implements MetadataInterface
 {
-    /** @var Map */
-    private $compositeMap;
+    use MapTrait;
 
-    /** @param array $state */
-    public static function fromNative($state): MetadataInterface
+    private function __construct(iterable $metadata = [])
     {
-        return new self($state);
+        $this->init($metadata);
     }
 
-    public static function makeEmpty(): MetadataInterface
+    public static function makeEmpty(): self
     {
         return new self;
     }
 
-    private function __construct(array $metadata = [])
-    {
-        $this->compositeMap = new Map($metadata);
-    }
-
-    public function equals(MetadataInterface $metadata): bool
-    {
-        foreach ($metadata as $key => $value) {
-            if (!$this->has($key) || $this->get($key) !== $value) {
-                return false;
-            }
-        }
-        return $metadata->count() === $this->count();
-    }
-
-    public function has(string $key): bool
-    {
-        return $this->compositeMap->hasKey($key);
-    }
-
-    public function with(string $key, $value): MetadataInterface
-    {
-        $copy = clone $this;
-        $copy->compositeMap->put($key, $value);
-        return $copy;
-    }
-
-    public function without(string $key): MetadataInterface
-    {
-        $copy = clone $this;
-        $copy->compositeMap->remove($key);
-        return $copy;
-    }
-
-    public function get(string $key, $default = null)
-    {
-        return $this->has($key) ? $this->compositeMap->get($key) : $default;
-    }
-
-    public function isEmpty(): bool
-    {
-        return $this->compositeMap->isEmpty();
-    }
-
-    public function getIterator(): Traversable
-    {
-        return $this->compositeMap->getIterator();
-    }
-
-    public function count(): int
-    {
-        return $this->compositeMap->count();
-    }
-
     public function toNative(): array
     {
-        return $this->compositeMap->toArray();
+        return $this->unwrap();
     }
 
-    private function __clone()
+    /** @param array $state */
+    public static function fromNative($state): self
     {
-        $this->compositeMap = clone $this->compositeMap;
+        return new self($state);
     }
 }

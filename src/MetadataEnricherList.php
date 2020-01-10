@@ -8,15 +8,19 @@
 
 namespace Daikon\Metadata;
 
-use Countable;
+use Daikon\DataStructure\TypedListInterface;
 use Daikon\DataStructure\TypedListTrait;
-use IteratorAggregate;
 
-final class MetadataEnricherList implements IteratorAggregate, Countable
+final class MetadataEnricherList implements TypedListInterface
 {
     use TypedListTrait;
 
-    public function prependDefaultEnricher(string $namespace, string $value): self
+    public function __construct(iterable $enrichers = [])
+    {
+        $this->init($enrichers, [MetadataEnricherInterface::class]);
+    }
+
+    public function prependEnricher(string $namespace, string $value): self
     {
         return $this->unshift(
             new CallbackMetadataEnricher(
@@ -25,11 +29,5 @@ final class MetadataEnricherList implements IteratorAggregate, Countable
                 }
             )
         );
-    }
-
-    /** @param MetadataEnricherInterface[]|self $enrichers */
-    public function __construct(iterable $enrichers = [])
-    {
-        $this->init($enrichers, MetadataEnricherInterface::class);
     }
 }
