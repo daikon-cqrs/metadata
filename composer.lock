@@ -74,12 +74,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/data-structure.git",
-                "reference": "7a4f69123fe3a11de9366aeae6bda4bab8981b60"
+                "reference": "7d7b782079afd1c6d78827597ecf9ae6ff2b6e2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/data-structure/zipball/7a4f69123fe3a11de9366aeae6bda4bab8981b60",
-                "reference": "7a4f69123fe3a11de9366aeae6bda4bab8981b60",
+                "url": "https://api.github.com/repos/daikon-cqrs/data-structure/zipball/7d7b782079afd1c6d78827597ecf9ae6ff2b6e2e",
+                "reference": "7d7b782079afd1c6d78827597ecf9ae6ff2b6e2e",
                 "shasum": ""
             },
             "require": {
@@ -116,7 +116,7 @@
                 "map",
                 "vector"
             ],
-            "time": "2020-05-27T23:23:49+00:00"
+            "time": "2020-05-28T02:04:18+00:00"
         },
         {
             "name": "daikon/interop",
