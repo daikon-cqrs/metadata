@@ -8,6 +8,7 @@
 
 namespace Daikon\Tests\Metadata;
 
+use Daikon\Metadata\Metadata;
 use Daikon\Metadata\MetadataEnricherInterface;
 use Daikon\Metadata\MetadataEnricherList;
 use PHPUnit\Framework\TestCase;
@@ -32,5 +33,22 @@ final class MetadataEnricherListTest extends TestCase
         $enricherList = $emptyList->push($mockEnricher);
         $this->assertCount(1, $enricherList);
         $this->assertTrue($emptyList->isEmpty());
+    }
+
+    public function testPrependEnricher(): void
+    {
+        $mockEnricher = $this->createMock(MetadataEnricherInterface::class);
+        $mockEnricher->expects($this->once())->method('enrich')->willReturnArgument(0);
+        $enricherList = new MetadataEnricherList([$mockEnricher]);
+        $newList = $enricherList->prependEnricher('key', 'value');
+        $this->assertCount(2, $newList);
+        $this->assertNotSame($enricherList, $newList);
+        $this->assertFalse($enricherList === $newList);
+        $metadata = Metadata::fromNative(['abc' => 'xyz']);
+        /** @var MetadataEnricherInterface $enricher */
+        foreach ($newList as $enricher) {
+            $metadata = $enricher->enrich($metadata);
+        }
+        $this->assertEquals(['abc' => 'xyz', 'key' => 'value'], $metadata->toNative());
     }
 }
