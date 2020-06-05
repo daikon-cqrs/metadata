@@ -8,13 +8,10 @@
 
 namespace Daikon\Metadata;
 
-use Daikon\DataStructure\TypedListInterface;
-use Daikon\DataStructure\TypedListTrait;
+use Daikon\DataStructure\TypedList;
 
-final class MetadataEnricherList implements TypedListInterface
+final class MetadataEnricherList extends TypedList
 {
-    use TypedListTrait;
-
     public function __construct(iterable $enrichers = [])
     {
         $this->init($enrichers, [MetadataEnricherInterface::class]);

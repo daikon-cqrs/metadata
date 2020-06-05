@@ -8,12 +8,10 @@
 
 namespace Daikon\Metadata;
 
-use Daikon\DataStructure\MapTrait;
+use Daikon\DataStructure\Map;
 
-final class Metadata implements MetadataInterface
+final class Metadata extends Map implements MetadataInterface
 {
-    use MapTrait;
-
     private function __construct(iterable $metadata = [])
     {
         $this->init($metadata);

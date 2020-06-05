@@ -8,6 +8,7 @@
 
 namespace Daikon\Tests\Metadata;
 
+use Assert\InvalidArgumentException;
 use Daikon\Metadata\Metadata;
 use PHPUnit\Framework\TestCase;
 
@@ -49,6 +50,8 @@ final class MetadataTest extends TestCase
         $this->assertNull($emptyMetadata->get('foo', null));
         $this->assertEquals($metadata->get('foo'), 'bar');
         $this->assertFalse($metadata->equals($emptyMetadata));
+        $this->expectException(InvalidArgumentException::class);
+        $this->assertNull($emptyMetadata->get('foo'));
     }
 
     public function testEquals(): void
