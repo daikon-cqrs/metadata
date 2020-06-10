@@ -21,6 +21,6 @@ final class CallbackMetadataEnricher implements MetadataEnricherInterface
 
     public function enrich(MetadataInterface $metadata): MetadataInterface
     {
-        return call_user_func($this->callable, $metadata);
+        return ($this->callable)($metadata);
     }
 }

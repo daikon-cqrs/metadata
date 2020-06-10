@@ -8,7 +8,7 @@
 
 namespace Daikon\Tests\Metadata;
 
-use Assert\InvalidArgumentException;
+use Daikon\Interop\InvalidArgumentException;
 use Daikon\Metadata\Metadata;
 use PHPUnit\Framework\TestCase;
 

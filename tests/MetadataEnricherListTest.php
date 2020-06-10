@@ -40,7 +40,7 @@ final class MetadataEnricherListTest extends TestCase
         $mockEnricher = $this->createMock(MetadataEnricherInterface::class);
         $mockEnricher->expects($this->once())->method('enrich')->willReturnArgument(0);
         $enricherList = new MetadataEnricherList([$mockEnricher]);
-        $newList = $enricherList->prependEnricher('key', 'value');
+        $newList = $enricherList->enrichWith('key', 'value');
         $this->assertCount(2, $newList);
         $this->assertNotSame($enricherList, $newList);
         $this->assertFalse($enricherList === $newList);

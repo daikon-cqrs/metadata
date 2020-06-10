@@ -17,7 +17,7 @@ final class MetadataEnricherList extends TypedList
         $this->init($enrichers, [MetadataEnricherInterface::class]);
     }
 
-    public function prependEnricher(string $key, string $value): self
+    public function enrichWith(string $key, string $value): self
     {
         return $this->unshift(
             new CallbackMetadataEnricher(
