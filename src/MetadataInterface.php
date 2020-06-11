@@ -10,9 +10,9 @@ namespace Daikon\Metadata;
 
 use Daikon\DataStructure\MapInterface;
 use Daikon\Interop\FromNativeInterface;
+use Daikon\Interop\MakeEmptyInterface;
 use Daikon\Interop\ToNativeInterface;
 
-interface MetadataInterface extends MapInterface, FromNativeInterface, ToNativeInterface
+interface MetadataInterface extends MapInterface, MakeEmptyInterface, FromNativeInterface, ToNativeInterface
 {
-    public static function makeEmpty(): self;
 }
